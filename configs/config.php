@@ -1,5 +1,6 @@
 <?php
-define('DB_HOST','3.27.144.194');
+$ip = file_get_contents(('http://ifconfig.me/ip'));
+define('DB_HOST',$ip);
 define('DB_USER','root');
 define('DB_PASS','conggioi');
 define('DB_NAME','quanlychuoicuahang');

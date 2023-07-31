@@ -22,22 +22,20 @@
           <div class="circle"></div>
         </div>
         <div class="imgs item2">
-          <div class="circle"></div>
           <figure>
             <img
               class="images"
-              src="/public/images/home1.png"
+              src="https://cdn-icons-png.flaticon.com/256/11465/11465806.png"
               alt=""
               loading="lazy"
             />
           </figure>
         </div>
         <div class="imgs item3">
-          <div class="circle"></div>
           <figure>
             <img
               class="images"
-              src="/public/images/home2.png"
+              src="https://cdn-icons-png.flaticon.com/256/5154/5154652.png"
               alt=""
               loading="lazy"
             />
