@@ -25,7 +25,7 @@
           <figure>
             <img
               class="images"
-              src="https://cdn-icons-png.flaticon.com/256/11465/11465806.png"
+              src="/public/images/home1.png"
               alt=""
               loading="lazy"
             />
@@ -35,7 +35,7 @@
           <figure>
             <img
               class="images"
-              src="https://cdn-icons-png.flaticon.com/256/5154/5154652.png"
+              src="/public/images/home2.png"
               alt=""
               loading="lazy"
             />

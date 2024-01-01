@@ -2,6 +2,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PEPKK72NWX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PEPKK72NWX');
+</script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,8 +36,10 @@
     crossorigin="anonymous"
   ></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+
     <?php require_once __DIR__ . '/../configs/scripts.php'; ?>
-  </head>
+  </head>  
   <body>
     <div class="top">
       <div class="container top-bar">
@@ -61,7 +72,7 @@
           <nav>
             <ul>
               <li><a href="/" title="Trang chủ">Trang chủ</a></li>
-              <li><a href="/About" title="Giới thiệu">Trò chơi</a></li>
+            
               <li><a href="/Menu/page/" title="Thực đơn">Thực đơn</a></li>
               <?php if(isset($_SESSION['user'])){ ?>
               <li class="cart"><a href="/Cart" title="Giỏ hàng">Giỏ hàng</a>
@@ -70,7 +81,6 @@
               <li><a href="/Order" title="Đơn hàng">Đơn hàng</a></li>
               <?php } ?>
               <li><a href="/Branch"  title="Chi nhánh">Chi nhánh</a></li>
-              <li><a href="/Blog"  title="Tin tức">Tin tức</a></li>
             </ul>
           </nav>
         </div>
