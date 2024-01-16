@@ -1,6 +1,9 @@
 <?php
 $row = $data[0]->fetch_assoc();
- ?>
+?>
+<script>
+    document.title = "<?php echo $row["name"] ?>"
+</script>
  <section>
     <div class="container-detail">
         <div class="detail">
