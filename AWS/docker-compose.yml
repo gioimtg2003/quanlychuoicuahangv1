@@ -1,0 +1,43 @@
+version: "3.3"
+services:
+  mysql:
+    container_name: mysql_database
+    build:
+      context: ./mysql
+      dockerfile: ./Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-password
+      - MYSQL_DATABASE=quanlychuoicuahang
+    networks:
+      - web
+  php:
+    container_name: web_php
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    networks:
+      - web
+    depends_on:
+      - mysql
+    working_dir: /var/www/html
+    environment:
+      - MYSQL=mysql
+      - MYSQL_ROOT_PASSWORD=my-password
+
+  nginx:
+    container_name: webserver_nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    command: nginx -g "daemon off;"
+    ports:
+      - "80:80"
+    environment:
+      - MYSQL=mysql
+      - MYSQL_ROOT_PASSWORD=my-password
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

@@ -66,7 +66,7 @@
                   <?php } ?>
                   </div>
                   <div class="add-to-cart">
-                    <button type="button"data-id="<?php echo $row["id"] ?>"data-name="<?php echo $row["name"] ?>"data-price="<?php echo $price ?>"data-image="<?php echo $row["image"] ?>" onclick="addCart(this)">Thêm vào giỏ hàng</button>
+                    <button class="btn-add-to-cart" type="button"data-id="<?php echo $row["id"] ?>"data-name="<?php echo $row["name"] ?>"data-price="<?php echo $price ?>"data-image="<?php echo $row["image"] ?>" onclick="addCart(this)">Thêm vào giỏ hàng</button>
                   </div>
                 </div>
               </div>

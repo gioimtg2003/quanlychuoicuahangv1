@@ -1,3 +1,4 @@
+
 <?php
 class Order extends baseController{
     private $model;
@@ -17,7 +18,8 @@ class Order extends baseController{
             if(isset($_POST["status"])){
                 $status = $_POST["status"];
                 $this->model->post($id, $status);
-                echo '<script>location.href="/Order/Details/'.$id. '";</script>';
+                echo '<script>location.href="/Order/Details/'.$id. '"; </script>';
+                
             }
                 
             $this->view("Order/Details", $this->model->getInfo($id)->fetch_assoc(), $this->model->getProduct($id));

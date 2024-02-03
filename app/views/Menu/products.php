@@ -65,13 +65,13 @@
               <div class="item-product">
                 <div class="inner-product">
                   <div class="img-product">
-                    <a href="/Menu/details/<?php echo $row["id"] ?>">
+                    <a href="/Menu/details/<?php echo $row["id"] ?>" class="<?php echo "name-product-url"?>">
                       <img src="<?php echo $row['image'];?>" alt="<?php echo $row['name'] ?>">
                     </a>
                   </div>
                   <div class="name-product">
                     <h3 >
-                      <a href="/Menu/details/<?php echo $row["id"] ?>"><?php echo $row['name'] ?></a>
+                      <a href="/Menu/details/<?php echo $row["id"];?>" class="<?php echo "name-product-url"?>"><?php echo $row['name'] ?></a>
                     </h3>
                   </div>
                   <div class="price-product">
@@ -97,7 +97,7 @@
                   <?php } ?>
                   </div>
                   <div class="add-to-cart">
-                    <button type="button" data-id="<?php echo $row["id"] ?>"data-name="<?php echo $row["name"] ?>"data-price="<?php echo $price ?>"data-image="<?php echo $row["image"] ?>" onclick="addCart(this)" >Thêm vào giỏ hàng</button>
+                    <button class="btn-add-to-cart" type="button" data-id="<?php echo $row["id"] ?>"data-name="<?php echo $row["name"] ?>"data-price="<?php echo $price ?>"data-image="<?php echo $row["image"] ?>" onclick="addCart(this)" >Thêm vào giỏ hàng</button>
                   </div>
                 </div>
               </div>
@@ -118,3 +118,6 @@
   </div>
   <?php } ?>
 </section>
+<script>
+  
+</script>

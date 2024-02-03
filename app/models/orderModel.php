@@ -19,7 +19,7 @@ class orderModel extends connectDB{
         return $this->connect->query($sql);
     }
     public function getProduct($id){
-        $sql = "SELECT product.image, product.description, product.name, product.discount, product.price, oder_item.quantity FROM oder join oder_item on oder_item.oder_id = oder.id join product on oder_item.product_id = product.id WHERE oder.id = $id"; 
+        $sql = "SELECT oder.id as order_id, product.id, product.image, product.description, product.name, product.discount, product.price, oder_item.quantity FROM oder join oder_item on oder_item.oder_id = oder.id join product on oder_item.product_id = product.id WHERE oder.id = $id"; 
         return $this->connect->query($sql);
     }
 }

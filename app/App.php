@@ -23,6 +23,9 @@ class App
         
         $url = $this->parseURL();
         //xử lý controller là phần tử 0 của mảng
+        if(isset($_GET['gtm_debug'])){
+            return ;
+        }
         if ($url[0] !== "") {
             $this->controller = ucfirst($url[0]);
         }

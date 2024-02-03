@@ -3,6 +3,22 @@ $row = $data[0]->fetch_assoc();
 ?>
 <script>
     document.title = "<?php echo $row["name"] ?>"
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+    event: "view_item",
+    ecommerce: {
+        currency: "VND",
+        value: <?php echo $row["price"] ?>,
+        items: [
+        {
+        item_id: "<?php echo $row["id"] ?>",
+        item_name: "<?php echo $row["name"] ?>",
+        price: <?php echo $row["price"] ?>,
+        quantity: 1
+        }
+        ]
+    }
+});
 </script>
  <section>
     <div class="container-detail">

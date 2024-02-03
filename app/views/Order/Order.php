@@ -67,7 +67,7 @@
                 ?></td>
               <td class="action">
               
-                <a href="/Order/details/<?php echo $row["id"] ?>" target="_blank">Chi tiết</a>
+                <a href="/Order/details/<?php echo $row["id"] ?>" target="">Chi tiết</a>
               </td>
             </tr>
             <?php } ?>

@@ -12,10 +12,10 @@
                         </div>
                         <div class="receiver">
                             <div class="name">
-                                <p>Name: <?php echo $_SESSION["user"]["name"]?></p>
+                                <p>Name: <?php echo $_SESSION["user"]["name"] ?></p>
                             </div>
                             <div class="phone">
-                                <p>(Phone) <?php echo $_SESSION["user"]["phone"]?></p>
+                                <p>(Phone) <?php echo $_SESSION["user"]["phone"] ?></p>
                             </div>
                             <div class="address">
                                 <p>
@@ -29,7 +29,7 @@
                             <p><i class="fa-solid fa-helicopter"></i>Vận chuyển máy bay</p>
                         </div>
                         <div class="delivery-time">
-                            <?php if($data[0]['status'] == "cancel" ){ ?>
+                            <?php if ($data[0]['status'] == "cancel") {?>
                             <div class="delivery-time-items" style="color: #FD8A8A;">
                                 <div class="tron"><i class="fa-solid fa-helicopter"></i></div>
                                 <div class="items-details">
@@ -41,8 +41,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
-                            <?php if($data[0]['status'] == "success" ){ ?>
+                            <?php }?>
+                            <?php if ($data[0]['status'] == "success") {?>
                             <div class="delivery-time-items" style="color: #50be06;">
                                 <div class="tron"><i class="fa-solid fa-helicopter"></i></div>
                                 <div class="items-details">
@@ -54,18 +54,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
-                            <?php if($data[0]['status'] != "pending" ){ ?>
+                            <?php }?>
+                            <?php if ($data[0]['status'] != "pending") {?>
                             <div class="delivery-time-items" style="color: #95BDFF;">
                                 <div class="tron"><i class="fa-solid fa-helicopter"></i></div>
                                 <div class="items-details">
-                                    
+
                                     <div class="status">
                                         <p>Đơn hàng đang vận chuyện đến bạn theo dự kiến, vui lòng không được boom hàng.</p>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php }?>
                             <div class="delivery-time-items" style="color: #e8b417;">
                                 <div class="tron"><i class="fa-solid fa-helicopter"></i></div>
                                 <div class="items-details">
@@ -83,8 +83,30 @@
             </div>
             <div class="container-product-info">
                 <div class="product-info">
-                    <?php $totalDiscount = 0; while($product = $data[1]->fetch_assoc()){ ?>
+                    <script>
+                        let products = [];
+                        let product = {
+                            name : "abc",
+                            price : 2332,
+                            quantity : 23
+                        };
+                        let id = <?php echo $data[0]["id"] ?>;
+                        let value = Math.floor(<?php echo $data[0]["price_total"] ?>);
+                    </script>
+                    <?php $totalDiscount = 0;while ($product = $data[1]->fetch_assoc()) {?>
                     <div class="product-items">
+                        <script>
+                        function createProduct(id, name, price, quantity,) {
+                            return {
+                                item_id : id,
+                                item_name: name,
+                                price: price,
+                                quantity: quantity,
+
+                            };
+                        }
+                        products.push(createProduct(<?php echo $product["id"] ?>,'<?php echo $product["name"] ?>', <?php echo $product["price"] ?>, <?php echo $product["quantity"] ?>));
+                    </script>
                         <div class="image">
                             <img src="<?php echo $product["image"] ?>" alt="<?php echo $product["name"] ?>">
                         </div>
@@ -100,26 +122,26 @@
                             </div>
                         </div>
                         <div class="price">
-                            <?php if($product["discount"] != null && $product["discount"] > 0) {?>
+                            <?php if ($product["discount"] != null && $product["discount"] > 0) {?>
                             <div class="price-old">
                                 <p><?php
-                                    $discount = $product["price"] * ((int)$product["discount"] / 100);
-                                    $price = $product["price"] - $discount ;
-                                    
-                                    echo number_format($product["price"]) ?>
+$discount = $product["price"] * ((int) $product["discount"] / 100);
+    $price = $product["price"] - $discount;
+
+    echo number_format($product["price"])?>
                                 đ</p>
                             </div>
-                            <?php $totalDiscount += $discount * $product["quantity"];} ?>
-                            
+                            <?php $totalDiscount += $discount * $product["quantity"];}?>
+
                             <div class="price-new">
-                                <p><?php if($product["discount"] != null && $product["discount"] > 0) {
-                                    echo number_format($price); }else{ echo number_format($product["price"]);}?>
+                                <p><?php if ($product["discount"] != null && $product["discount"] > 0) {
+    echo number_format($price);} else {echo number_format($product["price"]);}?>
                                     đ</p>
                             </div>
-                            
+
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php }?>
                 </div>
                 <div class="container-payment">
                     <div class="payment">
@@ -144,15 +166,35 @@
                     <div class="btn-status">
                         <form action="" method="post" id="f-cancel">
                             <input type="text" name="status" value="cancel" id="cancel" value="cancel" style="display:none;">
-                            <button type="submit" <?php if($data[0]["status"] == "pending") {echo "style='background-color:#f44905;'";} else {echo "disabled";} ?>>Hủy đơn ngay</button>
+                            <button type="submit" <?php if ($data[0]["status"] == "pending") {echo "style='background-color:#f44905;'";} else {echo "disabled";}?>>Hủy đơn ngay</button>
                         </form>
                         <form action="" method="post" id="f-delivery">
                             <input type="text" name="status"id="delivery" value="delivered" style="display:none;">
-                            <button type="submit"<?php if($data[0]["status"] != "shipping" ) {echo "style='background-color:#98d8f4;' disabled";}?> >Đã nhận được hàng</button>
+                            <button id="btn-purchase" type="submit"<?php if ($data[0]["status"] != "shipping") {echo "style='background-color:#98d8f4;' ";}?> >Đã nhận được hàng</button>
                         </form>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    function purchase(transaction_id, price, items) {
+        dataLayer.push({ ecommerce: null });  
+        dataLayer.push( {
+            event: "purchase",
+            ecommerce : {
+                currency : 'VND',
+                transaction_id : transaction_id,
+                value : price,
+                items : items
+            }
+    });
+    
+    }
+    document.getElementById("btn-purchase").addEventListener("click", () => {
+        purchase(id, value, products);
+        console.log("Purchase")
+    })
+</script>
